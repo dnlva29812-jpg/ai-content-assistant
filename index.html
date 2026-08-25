@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AI-помощник для создания контента" />
+    <title>AI Content Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="brand"><span class="brand-mark">✦</span> AI Content Assistant</div>
+        <div class="hero-copy">
+          <p class="eyebrow">Контент за несколько минут</p>
+          <h1 id="page-title">Идеи, которые<br /><em>хочется</em> публиковать.</h1>
+          <p class="intro">Расскажите о вашем бизнесе — помощник подготовит основу для Reels, поста и визуала.</p>
+        </div>
+        <div class="steps" aria-label="Как это работает">
+          <span><b>01</b> Заполните бриф</span><span><b>02</b> Получите контент</span><span><b>03</b> Адаптируйте под себя</span>
+        </div>
+      </section>
+
+      <section class="workspace" aria-label="Генератор контента">
+        <form id="content-form" class="brief-card">
+          <div class="section-heading"><span class="spark">✦</span><div><p class="eyebrow">Ваш мини-бриф</p><h2>С чего начнём?</h2></div></div>
+          <label>Ваша ниша или экспертность
+            <input id="niche" name="niche" required placeholder="Например, психолог для мам" value="Психолог для мам" />
+          </label>
+          <label>Тема контента
+            <input id="topic" name="topic" required placeholder="Например, как не выгорать" value="Как не выгорать и находить время на себя" />
+          </label>
+          <fieldset><legend>Цель контента</legend><div class="goal-options">
+            <label><input type="radio" name="goal" value="Продажи" /><span>↗<small>Продажи</small></span></label>
+            <label><input type="radio" name="goal" value="Вовлечение" checked /><span>♡<small>Вовлечение</small></span></label>
+            <label><input type="radio" name="goal" value="Обучение" /><span>◒<small>Обучение</small></span></label>
+          </div></fieldset>
+          <button type="submit">Создать контент <span>→</span></button>
+          <p class="form-note">Никакой регистрации — только ваши идеи.</p>
+        </form>
+
+        <div id="empty-state" class="empty-state" aria-live="polite">
+          <div class="empty-orbit">✦</div><h2>Ваш контент<br />появится здесь</h2><p>Заполните мини-бриф слева — мы соберём готовые идеи для публикаций.</p>
+        </div>
+
+        <section id="results" class="results" hidden aria-live="polite">
+          <div class="results-title"><div><p class="eyebrow">Готово для вас</p><h2>Контент-план</h2></div><button id="reset-button" class="text-button" type="button">Новый бриф ↗</button></div>
+          <article class="result-card reels-card"><div class="card-label">01 · Reels</div><h3>5 идей для коротких видео</h3><ol id="reels-ideas"></ol></article>
+          <article class="result-card script-card"><div class="card-label">02 · Сценарий Reels</div><h3 id="script-title"></h3><div id="script-content" class="script-content"></div></article>
+          <article class="result-card post-card"><div class="card-label">03 · Текст поста</div><h3>Готово к публикации</h3><p id="post-content"></p></article>
+          <article class="result-card prompt-card"><div class="card-label">04 · Визуал</div><h3>Промпт для изображения</h3><p id="prompt-content"></p><button class="copy-button" type="button" data-copy="prompt-content">Скопировать <span>⧉</span></button></article>
+        </section>
+      </section>
+    </main>
+    <template id="idea-template"><li><span class="idea-number"></span><span class="idea-text"></span></li></template>
+    <script src="app.js"></script>
+  </body>
+</html>
